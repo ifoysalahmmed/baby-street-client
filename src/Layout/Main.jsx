@@ -1,7 +1,9 @@
+import Navbar from "../Pages/Shared/Navbar/Navbar";
+
 const Main = () => {
   return (
     <div>
-      <div>Hello world!</div>
+      <Navbar></Navbar>
     </div>
   );
 };
