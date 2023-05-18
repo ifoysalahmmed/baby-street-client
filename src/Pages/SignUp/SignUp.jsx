@@ -1,7 +1,12 @@
 import { Link } from "react-router-dom";
 import signInImg from "../../assets/login/signIn.png";
+import { useContext } from "react";
+import { AuthContext } from "../../Context/AuthProvider";
+import { updateProfile } from "firebase/auth";
 
 const SignUp = () => {
+  const { auth, createUser } = useContext(AuthContext);
+
   const handleSignUp = (event) => {
     event.preventDefault();
 
@@ -13,6 +18,28 @@ const SignUp = () => {
     const password = form.password.value;
 
     console.log(name, photo, email, password);
+
+    createUser(email, password)
+      .then((result) => {
+        const createdUser = result.user;
+        updateProfileInfo(name, photo);
+        form.reset();
+        console.log(createdUser);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+
+  const updateProfileInfo = (name, photo) => {
+    updateProfile(auth.currentUser, {
+      displayName: name,
+      photoURL: photo,
+    })
+      .then(() => {})
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (

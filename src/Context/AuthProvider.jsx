@@ -38,6 +38,7 @@ const AuthProvider = ({ children }) => {
   }, []);
 
   const authInfo = {
+    auth,
     user,
     createUser,
     signIn,
