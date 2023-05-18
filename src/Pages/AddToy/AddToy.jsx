@@ -1,13 +1,61 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../Context/AuthProvider";
 
 const AddToy = () => {
   const { user } = useContext(AuthContext);
 
+  const [selectedValue, setSelectedValue] = useState("");
+
+  const handleSelectChange = (event) => {
+    setSelectedValue(event.target.value);
+  };
+
+  const handleAddToy = (event) => {
+    event.preventDefault();
+
+    const form = event.target;
+
+    const photo = form.photo.value;
+    const name = form.name.value;
+    const seller_name = form.seller_name.value;
+    const seller_email = form.seller_email.value;
+    const price = form.price.value;
+    const rating = form.rating.value;
+    const quantity = form.quantity.value;
+    const description = form.description.value;
+
+    const toyInfo = {
+      img: photo,
+      name,
+      seller_name,
+      seller_email,
+      sub_category: selectedValue,
+      price,
+      rating,
+      quantity,
+      description,
+    };
+
+    fetch("http://localhost:5000/addToy", {
+      method: "PUT",
+      headers: {
+        "content-type": "application/json",
+      },
+      body: JSON.stringify(toyInfo),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+        if (data.insertedId) {
+          form.reset();
+        }
+      });
+  };
+
   return (
     <div className="mb-12 mt-12">
       <div className="card-body bg-green-200 rounded-xl px-24 py-12">
-        <form className="space-y-6">
+        <form onSubmit={handleAddToy} className="space-y-6">
           <div className="flex gap-6">
             <div className="form-control w-1/2">
               <input
@@ -54,10 +102,11 @@ const AddToy = () => {
 
           <div className="flex gap-6">
             <div className="form-control w-1/2">
-              <select className="select w-full">
-                <option disabled selected>
-                  Pick your Category
-                </option>
+              <select
+                value={selectedValue}
+                onChange={handleSelectChange}
+                className="select w-full"
+              >
                 <option value="Sports Car">Sports Car</option>
                 <option value="Truck">Truck</option>
                 <option value="Mini Police Car">Mini Police Car</option>
@@ -98,7 +147,7 @@ const AddToy = () => {
           <div className="flex gap-6">
             <div className="form-control w-full">
               <textarea
-                name="message"
+                name="description"
                 cols="30"
                 rows="6"
                 className="textarea textarea-bordered text-base"
