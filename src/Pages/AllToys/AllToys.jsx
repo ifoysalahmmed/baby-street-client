@@ -14,20 +14,18 @@ const AllToys = () => {
   }, []);
 
   return (
-    <div className="overflow-x-auto w-full bg-green-200 mt-12">
-      <table className="table w-full">
-        <thead>
-          <tr>
-            <th></th>
-            <th>Seller Name</th>
-            <th>Toy Name</th>
-            <th>Sub-category</th>
-            <th>Price</th>
-            <th>Available Quantity</th>
-            <th></th>
-          </tr>
+    <div className="overflow-x-auto w-full rounded-md text-center mt-12">
+      <table className="table-normal w-full ">
+        <thead className="bg-green-400">
+          <th></th>
+          <th>Seller Name</th>
+          <th>Toy Name</th>
+          <th>Category</th>
+          <th>Price</th>
+          <th>Available Quantity</th>
+          <th></th>
         </thead>
-        <tbody>
+        <tbody className="bg-green-200 text-black">
           {allToys?.map((toy) => (
             <AllToysRow key={toy._id} toy={toy}></AllToysRow>
           ))}

@@ -1,8 +1,25 @@
-const AllToysRow = () => {
+import { Link } from "react-router-dom";
+
+const AllToysRow = ({ toy }) => {
+  const { _id, seller_name, name, sub_category, price, quantity } = toy || {};
   return (
-    <div>
-      <h2>row coming</h2>
-    </div>
+    <tr>
+      <th>
+        <label>
+          <input type="checkbox" className="checkbox" />
+        </label>
+      </th>
+      <td>{seller_name}</td>
+      <td>{name}</td>
+      <td>{sub_category}</td>
+      <td>{price}</td>
+      <td>{quantity}</td>
+      <th>
+        <Link to={`toyDetails/${_id}`}>
+          <button className="btn btn-info btn-md">details</button>
+        </Link>
+      </th>
+    </tr>
   );
 };
 
