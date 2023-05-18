@@ -1,10 +1,10 @@
 import { Link } from "react-router-dom";
 import signInImg from "../../assets/login/signIn.png";
-// import { useContext } from "react";
-// import { AuthContext } from "../../Context/AuthProvider";
+import { useContext } from "react";
+import { AuthContext } from "../../Context/AuthProvider";
 
 const Login = () => {
-  // const { signIn } = useContext(AuthContext);
+  const { signIn } = useContext(AuthContext);
 
   const handleLogin = (event) => {
     event.preventDefault();
@@ -15,6 +15,15 @@ const Login = () => {
     const password = form.password.value;
 
     console.log(email, password);
+
+    signIn(email, password)
+      .then((result) => {
+        const loggedUser = result.user;
+        console.log(loggedUser);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (
