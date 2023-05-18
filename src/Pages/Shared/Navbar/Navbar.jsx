@@ -1,14 +1,28 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../../Context/AuthProvider";
 
 const Navbar = () => {
+  const { user, logOut } = useContext(AuthContext);
+
+  const handleLogOut = () => {
+    logOut()
+      .then(() => {})
+      .catch((error) => console.log(error));
+  };
+
   const navItems = (
-    <li className="font-semibold">
-      <Link to="/">Home</Link>
-      <Link to="/">All Toys</Link>
-      <Link to="/">My Toys</Link>
-      <Link to="/">Add A Toy</Link>
-      <Link to="/">Blogs</Link>
-    </li>
+    <>
+      <li className="font-semibold">
+        <Link to="/">Home</Link>
+      </li>
+      <li className="font-semibold">
+        <Link to="/">All Toys</Link>
+      </li>
+      <li className="font-semibold">
+        <Link to="/">Blogs</Link>
+      </li>
+    </>
   );
 
   return (
@@ -36,6 +50,16 @@ const Navbar = () => {
             className="menu menu-compact dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52"
           >
             {navItems}
+            {user?.email && (
+              <>
+                <li className="font-semibold">
+                  <Link to="/">My Toys</Link>
+                </li>
+                <li className="font-semibold">
+                  <Link to="/">Add A Toy</Link>
+                </li>
+              </>
+            )}
           </ul>
         </div>
         <Link className="btn btn-ghost normal-case text-xl h-full">
@@ -46,12 +70,43 @@ const Navbar = () => {
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu menu-horizontal px-1">{navItems}</ul>
+        <ul className="menu menu-horizontal px-1">
+          {navItems}
+          {user?.email && (
+            <>
+              <li className="font-semibold">
+                <Link to="/">My Toys</Link>
+              </li>
+              <li className="font-semibold">
+                <Link to="/">Add A Toy</Link>
+              </li>
+            </>
+          )}
+        </ul>
       </div>
       <div className="navbar-end">
-        <Link to="/login">
-          <button className="btn btn-success">Login</button>
-        </Link>
+        {!user?.email && (
+          <Link className="btn btn-success" to="/login">
+            Login
+          </Link>
+        )}
+        {user?.email && (
+          <div className="dropdown dropdown-end">
+            <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
+              <div className="w-10 rounded-full">
+                <img title={user.displayName} src={user.photoURL} alt="" />
+              </div>
+            </label>
+            <ul
+              tabIndex={0}
+              className="mt-3 p-2 shadow menu menu-compact dropdown-content bg-base-100 rounded-box w-52"
+            >
+              <li onClick={handleLogOut}>
+                <button className="btn btn-warning">Logout</button>
+              </li>
+            </ul>
+          </div>
+        )}
       </div>
     </div>
   );

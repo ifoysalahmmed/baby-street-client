@@ -1,11 +1,13 @@
 import { Link } from "react-router-dom";
 import signInImg from "../../assets/login/signIn.png";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../Context/AuthProvider";
 import { updateProfile } from "firebase/auth";
 
 const SignUp = () => {
   const { auth, createUser } = useContext(AuthContext);
+
+  const [error, setError] = useState("");
 
   const handleSignUp = (event) => {
     event.preventDefault();
@@ -19,15 +21,21 @@ const SignUp = () => {
 
     console.log(name, photo, email, password);
 
+    if (!/(?=.{8,})/.test(password)) {
+      setError("Password must be at least 8 characters");
+      return;
+    }
+
     createUser(email, password)
       .then((result) => {
         const createdUser = result.user;
         updateProfileInfo(name, photo);
         form.reset();
+        setError("");
         console.log(createdUser);
       })
       .catch((error) => {
-        console.log(error);
+        setError(error.message);
       });
   };
 
@@ -38,7 +46,7 @@ const SignUp = () => {
     })
       .then(() => {})
       .catch((error) => {
-        console.log(error);
+        setError(error.message);
       });
   };
 
@@ -51,6 +59,7 @@ const SignUp = () => {
         </div>
         <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
           <form onSubmit={handleSignUp} className="card-body">
+            {error && <p className="text-center text-red-700">{error}</p>}
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Name</span>

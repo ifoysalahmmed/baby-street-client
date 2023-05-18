@@ -1,10 +1,12 @@
 import { Link } from "react-router-dom";
 import signInImg from "../../assets/login/signIn.png";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../Context/AuthProvider";
 
 const Login = () => {
   const { signIn } = useContext(AuthContext);
+
+  const [error, setError] = useState("");
 
   const handleLogin = (event) => {
     event.preventDefault();
@@ -20,9 +22,10 @@ const Login = () => {
       .then((result) => {
         const loggedUser = result.user;
         console.log(loggedUser);
+        setError("");
       })
       .catch((error) => {
-        console.log(error);
+        setError(error.message);
       });
   };
 
@@ -35,6 +38,7 @@ const Login = () => {
         </div>
         <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
           <form onSubmit={handleLogin} className="card-body">
+          {error && <p className="text-center text-red-700">{error}</p>}
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Email</span>
