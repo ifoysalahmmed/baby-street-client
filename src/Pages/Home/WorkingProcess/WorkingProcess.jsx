@@ -4,7 +4,7 @@ import img3 from "../../../assets/images/workingProcess/creative.webp";
 
 const WorkingProcess = () => {
   return (
-    <div className="mt-12">
+    <div className="mt-12 px-5 md:px-0">
       <div className="text-center mb-6">
         <h2 className="text-3xl font-bold text-black">
           Here&apos;s how it works
