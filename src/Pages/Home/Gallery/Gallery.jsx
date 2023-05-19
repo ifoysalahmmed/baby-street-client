@@ -2,7 +2,12 @@ const Gallery = () => {
   return (
     <div className="container mx-auto px-5 md:px-0 py-2 pt-8 md:pt-12">
       <div className="-m-1 md:flex flex-wrap md:-m-2">
-        <div className="md:flex md:w-1/2 flex-wrap">
+        <div
+          className="md:flex md:w-1/2 flex-wrap"
+          data-aos="fade-up"
+          data-aos-easing="ease-out-cubic"
+          data-aos-duration="2000"
+        >
           <div className="md:w-1/2 p-1 md:p-2">
             <img
               alt="gallery"
@@ -25,7 +30,12 @@ const Gallery = () => {
             />
           </div>
         </div>
-        <div className="md:flex md:w-1/2 flex-wrap">
+        <div
+          className="md:flex md:w-1/2 flex-wrap"
+          data-aos="fade-down"
+          data-aos-easing="ease-out-cubic"
+          data-aos-duration="2000"
+        >
           <div className="w-full p-1 md:p-2">
             <img
               alt="gallery"
@@ -48,7 +58,12 @@ const Gallery = () => {
             />
           </div>
         </div>
-        <div className="md:flex md:w-full flex-wrap">
+        <div
+          className="md:flex md:w-full flex-wrap"
+          data-aos="fade-left"
+          data-aos-easing="ease-out-cubic"
+          data-aos-duration="2000"
+        >
           <div className="md:w-1/3 p-1 md:p-2">
             <img
               alt="gallery"

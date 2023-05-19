@@ -8,6 +8,7 @@ const AllToys = () => {
   const [allToys, setAllToys] = useState([]);
   const [searchName, setSearchName] = useState("");
   const [limit, setLimit] = useState(20);
+  // const [sorting, setSorting] = useState(1);
 
   useEffect(() => {
     fetch(`http://localhost:5000/allToys?limit=${limit}`)
@@ -30,6 +31,14 @@ const AllToys = () => {
   const handleLimit = () => {
     setLimit("");
   };
+
+  // const handleAscending = () => {
+  //   //
+  // };
+
+  // const handleDescending = () => {
+  //   //
+  // };
 
   return (
     <div>
@@ -59,6 +68,18 @@ const AllToys = () => {
           </button>
         </div>
       </div>
+      {/* <div className="text-right">
+        <button
+          onClick={handleAscending}
+          className="btn btn-sm btn-primary mr-2"
+        >
+          ascending
+        </button>
+
+        <button onClick={handleDescending} className="btn btn-sm btn-warning">
+          descending
+        </button>
+      </div> */}
       <div className="overflow-x-auto w-full rounded-md text-center mt-6">
         <table className="table-normal w-full ">
           <thead className="bg-green-400">
