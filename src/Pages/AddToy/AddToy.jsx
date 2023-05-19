@@ -1,10 +1,14 @@
 import { useContext, useState } from "react";
 import { AuthContext } from "../../Context/AuthProvider";
+import Swal from "sweetalert2";
+import { useNavigate } from "react-router-dom";
 
 const AddToy = () => {
   const { user } = useContext(AuthContext);
 
-  const [selectedValue, setSelectedValue] = useState("");
+  const navigate = useNavigate();
+
+  const [selectedValue, setSelectedValue] = useState("Sports Car");
 
   const handleSelectChange = (event) => {
     setSelectedValue(event.target.value);
@@ -48,6 +52,13 @@ const AddToy = () => {
         console.log(data);
         if (data.insertedId) {
           form.reset();
+          Swal.fire({
+            icon: "success",
+            title: "Your toy has been saved",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          navigate("/myToys");
         }
       });
   };
@@ -107,9 +118,7 @@ const AddToy = () => {
                 onChange={handleSelectChange}
                 className="select w-full"
               >
-                <option value="Sports Car" defaultValue>
-                  Sports Car
-                </option>
+                <option value="Sports Car">Sports Car</option>
                 <option value="Truck">Truck</option>
                 <option value="Mini Police Car">Mini Police Car</option>
               </select>
