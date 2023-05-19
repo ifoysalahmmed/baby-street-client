@@ -30,7 +30,7 @@ const Banner = () => {
             </a>
           </div>
         </div>
-        <div id="slide2" className="carousel-item relative w-full ">
+        <div id="slide2" className="carousel-item relative w-full">
           <img src={img2} className="w-full rounded-xl" />
           <div className="absolute transform -translate-y-1/2 right-10 top-1/2 w-1/2 space-y-4">
             <p className="text-2xl font-bold text-black">Your wow! Store</p>
@@ -52,7 +52,7 @@ const Banner = () => {
             </a>
           </div>
         </div>
-        <div id="slide3" className="carousel-item relative w-full ">
+        <div id="slide3" className="carousel-item relative w-full">
           <img src={img3} className="w-full rounded-xl" />
           <div className="absolute transform -translate-y-1/2 right-10 top-1/2 w-1/2 space-y-4">
             <p className="text-2xl font-bold text-black">

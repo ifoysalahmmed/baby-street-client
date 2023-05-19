@@ -60,7 +60,7 @@ const Gallery = () => {
         </div>
         <div
           className="md:flex md:w-full flex-wrap"
-          data-aos="fade-left"
+          data-aos="fade-up"
           data-aos-easing="ease-out-cubic"
           data-aos-duration="2000"
         >
