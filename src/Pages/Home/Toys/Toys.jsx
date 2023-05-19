@@ -24,7 +24,7 @@ const Toys = () => {
   };
 
   return (
-    <Tabs>
+    <Tabs className='mt-8'>
       <TabList className="text-center font-bold text-2xl">
         <Tab>Toys</Tab>
       </TabList>

@@ -40,7 +40,6 @@ const AllToys = () => {
         <table className="table-normal w-full ">
           <thead className="bg-green-400">
             <tr>
-              <th></th>
               <th>Seller Name</th>
               <th>Toy Name</th>
               <th>Category</th>
