@@ -107,7 +107,9 @@ const AddToy = () => {
                 onChange={handleSelectChange}
                 className="select w-full"
               >
-                <option value="Sports Car">Sports Car</option>
+                <option value="Sports Car" defaultValue>
+                  Sports Car
+                </option>
                 <option value="Truck">Truck</option>
                 <option value="Mini Police Car">Mini Police Car</option>
               </select>

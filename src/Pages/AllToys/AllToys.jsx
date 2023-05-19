@@ -25,16 +25,31 @@ const AllToys = () => {
 
   return (
     <div>
-      <div className="sm:text-center mt-6 md:flex items-center justify-center gap-4">
-        <input
-          onChange={(e) => setSearchName(e.target.value)}
-          type="text"
-          placeholder="Toy Name"
-          className="input w-full max-w-xs"
-        />
-        <button onClick={handleSearch} className="btn btn-success">
-          Search
-        </button>
+      <div className="form-control mt-6">
+        <div className="input-group justify-center">
+          <input
+            onChange={(e) => setSearchName(e.target.value)}
+            type="text"
+            placeholder="Search…"
+            className="input input-bordered"
+          />
+          <button onClick={handleSearch} className="btn btn-square btn-success">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              className="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+                d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+              />
+            </svg>
+          </button>
+        </div>
       </div>
       <div className="overflow-x-auto w-full rounded-md text-center mt-6">
         <table className="table-normal w-full ">

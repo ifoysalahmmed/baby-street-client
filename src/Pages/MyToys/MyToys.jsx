@@ -10,16 +10,20 @@ const MyToys = () => {
     fetch(`http://localhost:5000/myToys/${user?.email}`)
       .then((res) => res.json())
       .then((data) => {
-        console.log(data);
+        // console.log(data);
         setToys(data);
       });
   }, [user]);
 
   const handleDelete = (id) => {
-    fetch(`http://localhost:5000/myToys/${id}`)
+    fetch(`http://localhost:5000/myToys/${id}`, {
+      method: "DELETE",
+    })
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
+        const remaining = toys.filter((toy) => toy._id !== id);
+        setToys(remaining);
       });
   };
 
