@@ -92,6 +92,25 @@ const Blogs = () => {
           </p>
         </div>
       </div>
+
+      <div tabIndex={0} className="collapse group rounded-md">
+        <div className="collapse-title bg-primary text-xl font-semibold text-primary-content group-focus:bg-secondary group-focus:text-secondary-content">
+          What is MongoDB aggregate and how does it work?
+        </div>
+        <div className="collapse-content bg-primary text-primary-content group-focus:bg-secondary group-focus:text-secondary-content">
+          <p>
+            In MongoDB, the aggregate operation is a powerful method for
+            performing data aggregation tasks and complex data processing within
+            the database.
+          </p>
+          <p>
+            The MongoDB aggregate operation provides a powerful way to perform
+            data aggregation, analysis, and transformation directly within the
+            database, reducing the need for extensive data processing in the
+            application layer.
+          </p>
+        </div>
+      </div>
     </div>
   );
 };
