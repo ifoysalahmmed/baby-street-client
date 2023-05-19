@@ -1,6 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../Context/AuthProvider";
 import MyToysRow from "./MyToysRow";
+import Swal from "sweetalert2";
 
 const MyToys = () => {
   const { user } = useContext(AuthContext);
@@ -16,15 +17,34 @@ const MyToys = () => {
   }, [user]);
 
   const handleDelete = (id) => {
-    fetch(`http://localhost:5000/myToys/${id}`, {
-      method: "DELETE",
-    })
-      .then((res) => res.json())
-      .then((data) => {
-        console.log(data);
-        const remaining = toys.filter((toy) => toy._id !== id);
-        setToys(remaining);
-      });
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        fetch(`http://localhost:5000/myToys/${id}`, {
+          method: "DELETE",
+        })
+          .then((res) => res.json())
+          .then((data) => {
+            console.log(data);
+            if (data.deletedCount === 1) {
+              Swal.fire(
+                "Deleted!",
+                "Your Toy Info has been deleted.",
+                "success"
+              );
+              const remaining = toys.filter((toy) => toy._id !== id);
+              setToys(remaining);
+            }
+          });
+      }
+    });
   };
 
   return (
