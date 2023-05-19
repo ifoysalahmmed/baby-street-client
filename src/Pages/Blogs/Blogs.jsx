@@ -37,6 +37,37 @@ const Blogs = () => {
           </p>
         </div>
       </div>
+
+      <div tabIndex={0} className="collapse group rounded-md">
+        <div className="collapse-title bg-primary text-xl font-semibold text-primary-content group-focus:bg-secondary group-focus:text-secondary-content">
+          Compare SQL and NoSQL databases?
+        </div>
+        <div className="collapse-content bg-primary text-primary-content group-focus:bg-secondary group-focus:text-secondary-content">
+          <p>
+            SQL databases use a relational data model, where data is organized
+            into structured tables with predefined schemas. Relationships
+            between tables are established using keys (primary and foreign
+            keys).
+          </p>
+          <p>
+            On the other hand, NoSQL databases use various data models, such as
+            key-value pairs, documents, wide-column stores, or graph-based
+            structures. They provide flexibility in handling unstructured or
+            semi-structured data without rigid schemas.
+          </p>
+          <p>
+            SQL databases enforce a fixed schema, where the structure of the
+            tables and the types of data they hold are defined in advance.
+            Altering the schema typically requires modifying the table
+            definitions and migrating the existing data.
+          </p>
+          <p>
+            NoSQL databases are schema-less or have flexible schemas. Each
+            record/document can have its own structure, and new fields can be
+            added without altering the existing records.
+          </p>
+        </div>
+      </div>
     </div>
   );
 };
