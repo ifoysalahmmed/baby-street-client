@@ -53,7 +53,7 @@ const Navbar = () => {
             {user?.email && (
               <>
                 <li className="font-semibold">
-                  <Link to="/">My Toys</Link>
+                  <Link to="/myToys">My Toys</Link>
                 </li>
                 <li className="font-semibold">
                   <Link to="/addToy">Add A Toy</Link>
@@ -75,7 +75,7 @@ const Navbar = () => {
           {user?.email && (
             <>
               <li className="font-semibold">
-                <Link to="/">My Toys</Link>
+                <Link to="/myToys">My Toys</Link>
               </li>
               <li className="font-semibold">
                 <Link to="/addToy">Add A Toy</Link>
