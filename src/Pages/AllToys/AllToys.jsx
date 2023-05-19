@@ -4,15 +4,16 @@ import AllToysRow from "./AllToysRow";
 const AllToys = () => {
   const [allToys, setAllToys] = useState([]);
   const [searchName, setSearchName] = useState("");
+  const [limit, setLimit] = useState(20);
 
   useEffect(() => {
-    fetch("http://localhost:5000/allToys")
+    fetch(`http://localhost:5000/allToys?limit=${limit}`)
       .then((res) => res.json())
       .then((data) => {
         // console.log(data);
         setAllToys(data);
       });
-  }, []);
+  }, [limit]);
 
   const handleSearch = () => {
     fetch(`http://localhost:5000/getToysByName/${searchName}`)
@@ -21,6 +22,10 @@ const AllToys = () => {
         // console.log(data);
         setAllToys(data);
       });
+  };
+
+  const handleLimit = () => {
+    setLimit("");
   };
 
   return (
@@ -69,6 +74,11 @@ const AllToys = () => {
             ))}
           </tbody>
         </table>
+      </div>
+      <div className="text-center mt-6">
+        <button onClick={handleLimit} className="btn btn-primary">
+          Load More
+        </button>
       </div>
     </div>
   );
