@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import signInImg from "../../assets/login/signIn.png";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../Context/AuthProvider";
@@ -6,6 +6,11 @@ import { updateProfile } from "firebase/auth";
 
 const SignUp = () => {
   const { auth, createUser } = useContext(AuthContext);
+
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const from = location.state?.from?.pathname || "/";
 
   const [error, setError] = useState("");
 
@@ -33,6 +38,7 @@ const SignUp = () => {
         form.reset();
         setError("");
         console.log(createdUser);
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         setError(error.message);

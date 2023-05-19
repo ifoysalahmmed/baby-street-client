@@ -1,10 +1,15 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import signInImg from "../../assets/login/signIn.png";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../Context/AuthProvider";
 
 const Login = () => {
   const { signIn } = useContext(AuthContext);
+
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const from = location.state?.from?.pathname || "/";
 
   const [error, setError] = useState("");
 
@@ -21,8 +26,9 @@ const Login = () => {
     signIn(email, password)
       .then((result) => {
         const loggedUser = result.user;
-        console.log(loggedUser);
         setError("");
+        console.log(loggedUser);
+        navigate(from, { replace: true });
       })
       .catch((error) => {
         setError(error.message);
@@ -38,7 +44,7 @@ const Login = () => {
         </div>
         <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
           <form onSubmit={handleLogin} className="card-body">
-          {error && <p className="text-center text-red-700">{error}</p>}
+            {error && <p className="text-center text-red-700">{error}</p>}
             <div className="form-control">
               <label className="label">
                 <span className="label-text">Email</span>
