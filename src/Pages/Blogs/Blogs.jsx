@@ -68,6 +68,30 @@ const Blogs = () => {
           </p>
         </div>
       </div>
+
+      <div tabIndex={0} className="collapse group rounded-md">
+        <div className="collapse-title bg-primary text-xl font-semibold text-primary-content group-focus:bg-secondary group-focus:text-secondary-content">
+          What is express js? What is Nest JS?
+        </div>
+        <div className="collapse-content bg-primary text-primary-content group-focus:bg-secondary group-focus:text-secondary-content">
+          <p>
+            Express.js is a minimalist and unopinionated web application
+            framework for Node.js. It provides a set of simple and flexible
+            features for building web applications and APIs. Express.js focuses
+            on being lightweight and allows developers to have more control and
+            flexibility in designing their application&apos;s architecture.
+          </p>
+          <p>
+            On the other hand, Nest.js is a progressive, opinionated, and
+            full-featured framework for building scalable and maintainable
+            server-side applications. It is built on top of Express.js and
+            enhances it with additional features and architectural patterns.
+            Nest.js follows the modular design approach and uses TypeScript as
+            its primary language, promoting the use of object-oriented
+            programming and dependency injection.
+          </p>
+        </div>
+      </div>
     </div>
   );
 };
