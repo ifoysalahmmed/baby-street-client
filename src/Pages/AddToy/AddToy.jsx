@@ -37,7 +37,7 @@ const AddToy = () => {
     };
 
     fetch("http://localhost:5000/addToy", {
-      method: "PUT",
+      method: "POST",
       headers: {
         "content-type": "application/json",
       },

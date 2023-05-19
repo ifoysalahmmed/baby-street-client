@@ -15,29 +15,35 @@ const MyToys = () => {
       });
   }, [user]);
 
+  const handleDelete = (id) => {
+    console.log(id);
+  };
+
   return (
-    <div>
-      <div className="overflow-x-auto w-full rounded-md text-center mt-12">
-        <table className="table-normal w-full ">
-          <thead className="bg-cyan-400">
-            <tr>
-              <th>Name</th>
-              <th>Category</th>
-              <th>Price</th>
-              <th>Rating</th>
-              <th>Available quantity</th>
-              <th>Detail Description</th>
-              <th></th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody className="bg-cyan-200">
-            {toys.map((toy) => (
-              <MyToysRow key={toy._id}></MyToysRow>
-            ))}
-          </tbody>
-        </table>
-      </div>
+    <div className="overflow-x-auto w-full rounded-md text-center mt-12">
+      <table className="table-normal w-full ">
+        <thead className="bg-cyan-400">
+          <tr>
+            <th>Name</th>
+            <th>Category</th>
+            <th>Price</th>
+            <th>Rating</th>
+            <th>Available quantity</th>
+            <th>Detail Description</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody className="bg-cyan-200 text-black">
+          {toys.map((toy) => (
+            <MyToysRow
+              key={toy._id}
+              toy={toy}
+              handleDelete={handleDelete}
+            ></MyToysRow>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 };

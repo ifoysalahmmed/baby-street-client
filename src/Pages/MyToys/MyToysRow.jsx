@@ -1,43 +1,55 @@
-const MyToysRow = () => {
+import { Link } from "react-router-dom";
+
+const MyToysRow = ({ toy, handleDelete }) => {
+  const { _id, img, name, sub_category, price, rating, quantity, description } =
+    toy || {};
+
   return (
-    <div>
-      <h2>details coming</h2>
-      {/* row 1
-            <tr>
-              <th>
-                <label>
-                  <input type="checkbox" className="checkbox" />
-                </label>
-              </th>
-              <td>
-                <div className="flex items-center space-x-3">
-                  <div className="avatar">
-                    <div className="mask mask-squircle w-12 h-12">
-                      <img
-                        src="/tailwind-css-component-profile-2@56w.png"
-                        alt="Avatar Tailwind CSS Component"
-                      />
-                    </div>
-                  </div>
-                  <div>
-                    <div className="font-bold">Hart Hagerty</div>
-                    <div className="text-sm opacity-50">United States</div>
-                  </div>
-                </div>
-              </td>
-              <td>
-                Zemlak, Daniel and Leannon
-                <br />
-                <span className="badge badge-ghost badge-sm">
-                  Desktop Support Technician
-                </span>
-              </td>
-              <td>Purple</td>
-              <th>
-                <button className="btn btn-ghost btn-xs">details</button>
-              </th>
-            </tr> */}
-    </div>
+    <tr>
+      <td>
+        <div className="flex items-center space-x-3">
+          <div className="avatar">
+            <div className="w-24 rounded">
+              <img src={img} />
+            </div>
+          </div>
+          <div>
+            <div className="font-bold">{name}</div>
+          </div>
+        </div>
+      </td>
+      <td>{sub_category}</td>
+      <td>${price}</td>
+      <td>{rating}</td>
+      <td>{quantity}</td>
+      <td>{description.slice(0, 50) + "..."}</td>
+      <th>
+        <button
+          onClick={() => handleDelete(_id)}
+          className="btn btn-circle btn-warning"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-6 w-6"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+        </button>
+      </th>
+      <th>
+        <Link to={`/updateInfo/${_id}`}>
+          <button className="btn btn-secondary btn-sm">update</button>
+        </Link>
+      </th>
+    </tr>
   );
 };
 
