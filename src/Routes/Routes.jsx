@@ -10,6 +10,7 @@ import PrivateRoute from "./PrivateRoute";
 import MyToys from "../Pages/MyToys/MyToys";
 import UpdateToyInfo from "../Pages/UpdateToyInfo/UpdateToyInfo";
 import Error from "../Pages/Error/Error";
+import Blogs from "../Pages/Blogs/Blogs";
 
 const router = createBrowserRouter([
   {
@@ -22,39 +23,22 @@ const router = createBrowserRouter([
         element: <Home></Home>,
       },
       {
-        path: "/login",
-        element: <Login></Login>,
-      },
-      {
-        path: "/signUp",
-        element: <SignUp></SignUp>,
-      },
-      {
-        path: "/addToy",
-        element: (
-          <PrivateRoute>
-            <AddToy></AddToy>
-          </PrivateRoute>
-        ),
-      },
-      {
         path: "/allToys",
         element: <AllToys></AllToys>,
-      },
-      {
-        path: "/toyDetails/:id",
-        element: (
-          <PrivateRoute>
-            <ToyDetails></ToyDetails>
-          </PrivateRoute>
-        ),
-        loader: ({ params }) => fetch(`http://localhost:5000/toy/${params.id}`),
       },
       {
         path: "/myToys",
         element: (
           <PrivateRoute>
             <MyToys></MyToys>
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/addToy",
+        element: (
+          <PrivateRoute>
+            <AddToy></AddToy>
           </PrivateRoute>
         ),
       },
@@ -66,6 +50,27 @@ const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) => fetch(`http://localhost:5000/toy/${params.id}`),
+      },
+      {
+        path: "/toyDetails/:id",
+        element: (
+          <PrivateRoute>
+            <ToyDetails></ToyDetails>
+          </PrivateRoute>
+        ),
+        loader: ({ params }) => fetch(`http://localhost:5000/toy/${params.id}`),
+      },
+      {
+        path: "/blogs",
+        element: <Blogs></Blogs>,
+      },
+      {
+        path: "/login",
+        element: <Login></Login>,
+      },
+      {
+        path: "/signUp",
+        element: <SignUp></SignUp>,
       },
     ],
   },

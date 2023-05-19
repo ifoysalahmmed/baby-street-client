@@ -3,8 +3,11 @@ import signInImg from "../../assets/login/signIn.png";
 import { useContext, useState } from "react";
 import { AuthContext } from "../../Context/AuthProvider";
 import { updateProfile } from "firebase/auth";
+import useTitle from "../../Hooks/useTitle";
 
 const SignUp = () => {
+  useTitle("Sign Up");
+
   const { auth, createUser } = useContext(AuthContext);
 
   const navigate = useNavigate();

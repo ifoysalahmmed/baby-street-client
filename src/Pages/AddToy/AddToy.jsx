@@ -2,8 +2,11 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../../Context/AuthProvider";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
+import useTitle from "../../Hooks/useTitle";
 
 const AddToy = () => {
+  useTitle("Add Toy");
+
   const { user } = useContext(AuthContext);
 
   const navigate = useNavigate();

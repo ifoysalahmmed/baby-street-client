@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
+import useTitle from "../../Hooks/useTitle";
 
 const Error = () => {
+  useTitle("Error Page");
+
   return (
     <div>
       <div className="px-20 py-10 bg-green-100 min-h-screen">
