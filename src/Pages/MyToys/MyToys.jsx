@@ -16,7 +16,11 @@ const MyToys = () => {
   }, [user]);
 
   const handleDelete = (id) => {
-    console.log(id);
+    fetch(`http://localhost:5000/myToys/${id}`)
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      });
   };
 
   return (
