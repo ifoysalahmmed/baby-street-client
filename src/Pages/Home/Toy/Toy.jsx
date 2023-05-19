@@ -1,8 +1,24 @@
 import { Rating, ThinStar } from "@smastrom/react-rating";
 import "@smastrom/react-rating/style.css";
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../../Context/AuthProvider";
+import Swal from "sweetalert2";
 
 const Toy = ({ toy }) => {
+  const { user } = useContext(AuthContext);
+
+  const handleViewDetails = () => {
+    if (!user?.email) {
+      Swal.fire({
+        icon: "error",
+        title: "You have to log in first to view details",
+        showConfirmButton: false,
+        timer: 1500,
+      });
+    }
+  };
+
   const { _id, img, name, price, rating } = toy || {};
 
   return (
@@ -31,7 +47,10 @@ const Toy = ({ toy }) => {
           </div>
           <div>
             <Link to={`toyDetails/${_id}`}>
-              <button className="btn btn-primary btn-outline">
+              <button
+                onClick={handleViewDetails}
+                className="btn btn-primary btn-outline"
+              >
                 View Details
               </button>
             </Link>
