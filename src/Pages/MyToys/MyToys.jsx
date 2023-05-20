@@ -9,15 +9,18 @@ const MyToys = () => {
 
   const { user } = useContext(AuthContext);
   const [toys, setToys] = useState([]);
+  const [selectedValue, setSelectedValue] = useState("Ascending");
 
   useEffect(() => {
-    fetch(`https://baby-street-server.vercel.app/myToys/${user?.email}`)
+    fetch(
+      `https://baby-street-server.vercel.app/myToys/${user?.email}?sort=${selectedValue}`
+    )
       .then((res) => res.json())
       .then((data) => {
         // console.log(data);
         setToys(data);
       });
-  }, [user]);
+  }, [user, selectedValue]);
 
   const handleDelete = (id) => {
     Swal.fire({
@@ -50,31 +53,50 @@ const MyToys = () => {
     });
   };
 
+  const handleSelectChange = (event) => {
+    setSelectedValue(event.target.value);
+  };
+
   return (
-    <div className="overflow-x-auto w-full rounded-md text-center mt-12">
-      <table className="table-normal w-full ">
-        <thead className="bg-cyan-400">
-          <tr>
-            <th>Name</th>
-            <th>Category</th>
-            <th>Price</th>
-            <th>Rating</th>
-            <th>Available quantity</th>
-            <th>Detail Description</th>
-            <th></th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody className="bg-cyan-200 text-black">
-          {toys.map((toy) => (
-            <MyToysRow
-              key={toy._id}
-              toy={toy}
-              handleDelete={handleDelete}
-            ></MyToysRow>
-          ))}
-        </tbody>
-      </table>
+    <div className="mt-8">
+      <div className="text-right">
+        <select
+          value={selectedValue}
+          onChange={handleSelectChange}
+          className="select w-full max-w-xs"
+        >
+          <option disabled defaultValue>
+            Sort By
+          </option>
+          <option value="Ascending">Ascending</option>
+          <option value="Descending">Descending</option>
+        </select>
+      </div>
+      <div className="overflow-x-auto w-full rounded-md text-center mt-4">
+        <table className="table-normal w-full ">
+          <thead className="bg-cyan-400">
+            <tr>
+              <th>Name</th>
+              <th>Category</th>
+              <th>Price</th>
+              <th>Rating</th>
+              <th>Available quantity</th>
+              <th>Detail Description</th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody className="bg-cyan-200 text-black">
+            {toys.map((toy) => (
+              <MyToysRow
+                key={toy._id}
+                toy={toy}
+                handleDelete={handleDelete}
+              ></MyToysRow>
+            ))}
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };

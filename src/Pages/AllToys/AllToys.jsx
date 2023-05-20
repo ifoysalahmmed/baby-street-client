@@ -8,18 +8,15 @@ const AllToys = () => {
   const [allToys, setAllToys] = useState([]);
   const [searchName, setSearchName] = useState("");
   const [limit, setLimit] = useState(20);
-  const [selectedValue, setSelectedValue] = useState("Ascending");
 
   useEffect(() => {
-    fetch(
-      `https://baby-street-server.vercel.app/allToys?limit=${limit}&sort=${selectedValue}`
-    )
+    fetch(`https://baby-street-server.vercel.app/allToys?limit=${limit}`)
       .then((res) => res.json())
       .then((data) => {
         // console.log(data);
         setAllToys(data);
       });
-  }, [limit, selectedValue]);
+  }, [limit]);
 
   const handleSearch = () => {
     fetch(`https://baby-street-server.vercel.app/getToysByName/${searchName}`)
@@ -32,10 +29,6 @@ const AllToys = () => {
 
   const handleLimit = () => {
     setLimit(0);
-  };
-
-  const handleSelectChange = (event) => {
-    setSelectedValue(event.target.value);
   };
 
   return (
@@ -65,19 +58,6 @@ const AllToys = () => {
             </svg>
           </button>
         </div>
-      </div>
-      <div className="text-right">
-        <select
-          value={selectedValue}
-          onChange={handleSelectChange}
-          className="select w-full max-w-xs"
-        >
-          <option disabled defaultValue>
-            Sort By
-          </option>
-          <option value="Ascending">Ascending</option>
-          <option value="Descending">Descending</option>
-        </select>
       </div>
       <div className="overflow-x-auto w-full rounded-md text-center mt-6">
         <table className="table-normal w-full ">
