@@ -2,8 +2,6 @@
 
 ## **[Live site link](https://baby-street-client.web.app/)**
 
-<br>
-
 ## **Some key Features of this Project -**
 
 - User can Register. Without Registration no user can use any functionality without visit the website.
