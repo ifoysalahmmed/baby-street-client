@@ -11,7 +11,9 @@ const AllToys = () => {
   const [selectedValue, setSelectedValue] = useState("Ascending");
 
   useEffect(() => {
-    fetch(`http://localhost:5000/allToys?limit=${limit}&sort=${selectedValue}`)
+    fetch(
+      `https://baby-street-server.vercel.app/allToys?limit=${limit}&sort=${selectedValue}`
+    )
       .then((res) => res.json())
       .then((data) => {
         // console.log(data);
@@ -20,7 +22,7 @@ const AllToys = () => {
   }, [limit, selectedValue]);
 
   const handleSearch = () => {
-    fetch(`http://localhost:5000/getToysByName/${searchName}`)
+    fetch(`https://baby-street-server.vercel.app/getToysByName/${searchName}`)
       .then((res) => res.json())
       .then((data) => {
         // console.log(data);

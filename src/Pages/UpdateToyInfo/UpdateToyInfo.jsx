@@ -38,7 +38,7 @@ const UpdateToyInfo = () => {
       confirmButtonText: "Yes, update it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`http://localhost:5000/myToys/${_id}`, {
+        fetch(`https://baby-street-server.vercel.app/myToys/${_id}`, {
           method: "PUT",
           headers: {
             "content-type": "application/json",

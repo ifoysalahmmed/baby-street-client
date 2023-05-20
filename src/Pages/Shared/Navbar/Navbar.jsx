@@ -66,7 +66,7 @@ const Navbar = () => {
           <span className="mr-2">
             <img src="/logo.png" alt="" />
           </span>
-          Baby Street
+          <span className="text-indigo-600">Baby Street</span>
         </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
