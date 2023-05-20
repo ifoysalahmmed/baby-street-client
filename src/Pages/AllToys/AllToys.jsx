@@ -8,19 +8,19 @@ const AllToys = () => {
   const [allToys, setAllToys] = useState([]);
   const [searchName, setSearchName] = useState("");
   const [limit, setLimit] = useState(20);
-  // const [sorting, setSorting] = useState(1);
+  const [selectedValue, setSelectedValue] = useState("Ascending");
 
   useEffect(() => {
-    fetch(`https://baby-street-server.vercel.app/allToys?limit=${limit}`)
+    fetch(`http://localhost:5000/allToys?limit=${limit}&sort=${selectedValue}`)
       .then((res) => res.json())
       .then((data) => {
         // console.log(data);
         setAllToys(data);
       });
-  }, [limit]);
+  }, [limit, selectedValue]);
 
   const handleSearch = () => {
-    fetch(`https://baby-street-server.vercel.app/getToysByName/${searchName}`)
+    fetch(`http://localhost:5000/getToysByName/${searchName}`)
       .then((res) => res.json())
       .then((data) => {
         // console.log(data);
@@ -29,16 +29,12 @@ const AllToys = () => {
   };
 
   const handleLimit = () => {
-    setLimit("");
+    setLimit(0);
   };
 
-  // const handleAscending = () => {
-  //   //
-  // };
-
-  // const handleDescending = () => {
-  //   //
-  // };
+  const handleSelectChange = (event) => {
+    setSelectedValue(event.target.value);
+  };
 
   return (
     <div>
@@ -68,18 +64,19 @@ const AllToys = () => {
           </button>
         </div>
       </div>
-      {/* <div className="text-right">
-        <button
-          onClick={handleAscending}
-          className="btn btn-sm btn-primary mr-2"
+      <div className="text-right">
+        <select
+          value={selectedValue}
+          onChange={handleSelectChange}
+          className="select w-full max-w-xs"
         >
-          ascending
-        </button>
-
-        <button onClick={handleDescending} className="btn btn-sm btn-warning">
-          descending
-        </button>
-      </div> */}
+          <option disabled defaultValue>
+            Sort By
+          </option>
+          <option value="Ascending">Ascending</option>
+          <option value="Descending">Descending</option>
+        </select>
+      </div>
       <div className="overflow-x-auto w-full rounded-md text-center mt-6">
         <table className="table-normal w-full ">
           <thead className="bg-green-400">

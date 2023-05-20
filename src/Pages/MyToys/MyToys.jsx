@@ -11,7 +11,7 @@ const MyToys = () => {
   const [toys, setToys] = useState([]);
 
   useEffect(() => {
-    fetch(`https://baby-street-server.vercel.app/myToys/${user?.email}`)
+    fetch(`http://localhost:5000/myToys/${user?.email}`)
       .then((res) => res.json())
       .then((data) => {
         // console.log(data);
@@ -30,7 +30,7 @@ const MyToys = () => {
       confirmButtonText: "Yes, delete it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`https://baby-street-server.vercel.app/myToys/${id}`, {
+        fetch(`http://localhost:5000/myToys/${id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())

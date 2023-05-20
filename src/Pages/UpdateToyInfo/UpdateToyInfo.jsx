@@ -38,7 +38,7 @@ const UpdateToyInfo = () => {
       confirmButtonText: "Yes, update it!",
     }).then((result) => {
       if (result.isConfirmed) {
-        fetch(`https://baby-street-server.vercel.app/myToys/${_id}`, {
+        fetch(`http://localhost:5000/myToys/${_id}`, {
           method: "PUT",
           headers: {
             "content-type": "application/json",
@@ -54,8 +54,15 @@ const UpdateToyInfo = () => {
                 "Your Toy Info has been updated.",
                 "success"
               );
-              navigate("/myToys");
+            } else {
+              Swal.fire({
+                icon: "info",
+                title: "There are no new data to be updated.",
+                showConfirmButton: false,
+                timer: 1500,
+              });
             }
+            navigate("/myToys");
           });
       }
     });
@@ -76,7 +83,7 @@ const UpdateToyInfo = () => {
                 </span>
               </label>
               <input
-                type="text"
+                type="number"
                 placeholder="Price"
                 name="price"
                 defaultValue={price}

@@ -43,7 +43,7 @@ const AddToy = () => {
       description,
     };
 
-    fetch("https://baby-street-server.vercel.app/addToy", {
+    fetch("http://localhost:5000/addToy", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -128,7 +128,7 @@ const AddToy = () => {
             </div>
             <div className="form-control w-1/2">
               <input
-                type="text"
+                type="number"
                 placeholder="Price"
                 name="price"
                 required
