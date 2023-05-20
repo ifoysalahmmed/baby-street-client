@@ -4,6 +4,7 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../../Context/AuthProvider";
 import { updateProfile } from "firebase/auth";
 import useTitle from "../../Hooks/useTitle";
+import SocialLogin from "../Shared/SocialLogin/SocialLogin";
 
 const SignUp = () => {
   useTitle("Sign Up");
@@ -67,66 +68,69 @@ const SignUp = () => {
           <img src={signInImg} alt="" />
         </div>
         <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
-          <form onSubmit={handleSignUp} className="card-body">
+          <div className="card-body">
             {error && <p className="text-center text-red-700">{error}</p>}
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text">Name</span>
-              </label>
-              <input
-                type="text"
-                placeholder="Your Name"
-                name="name"
-                required
-                className="input input-bordered"
-              />
-            </div>
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text">Photo URL</span>
-              </label>
-              <input
-                type="url"
-                placeholder="Photo URL"
-                name="photo"
-                required
-                className="input input-bordered"
-              />
-            </div>
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text">Email</span>
-              </label>
-              <input
-                type="email"
-                placeholder="Your Email"
-                name="email"
-                required
-                className="input input-bordered"
-              />
-            </div>
-            <div className="form-control">
-              <label className="label">
-                <span className="label-text">Password</span>
-              </label>
-              <input
-                type="password"
-                placeholder="Your Password"
-                name="password"
-                required
-                className="input input-bordered"
-              />
-            </div>
-            <div className="form-control mt-6">
-              <button className="btn btn-primary">Sign Up</button>
-            </div>
+            <form onSubmit={handleSignUp}>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Name</span>
+                </label>
+                <input
+                  type="text"
+                  placeholder="Your Name"
+                  name="name"
+                  required
+                  className="input input-bordered"
+                />
+              </div>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Photo URL</span>
+                </label>
+                <input
+                  type="url"
+                  placeholder="Photo URL"
+                  name="photo"
+                  required
+                  className="input input-bordered"
+                />
+              </div>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Email</span>
+                </label>
+                <input
+                  type="email"
+                  placeholder="Your Email"
+                  name="email"
+                  required
+                  className="input input-bordered"
+                />
+              </div>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Password</span>
+                </label>
+                <input
+                  type="password"
+                  placeholder="Your Password"
+                  name="password"
+                  required
+                  className="input input-bordered"
+                />
+              </div>
+              <div className="form-control mt-6">
+                <button className="btn btn-primary">Sign Up</button>
+              </div>
+            </form>
+            <SocialLogin></SocialLogin>
             <p className="my-4 text-center">
               Already have an account?{" "}
               <Link to="/login" className="text-green-600 font-bold">
                 Login
               </Link>
             </p>
-          </form>
+          </div>
         </div>
       </div>
     </div>
