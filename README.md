@@ -13,3 +13,29 @@
 - Registered user can add new toys.
 - Registered user can modify the toy information.
 - Registered user can delete own added toys.
+
+## **Used packages / technology name for this Project -**
+
+### **Front-end**
+
+    @smastrom/react-rating,
+    aos,
+    daisyui,
+    firebase,
+    localforage,
+    match-sorter,
+    react,
+    react-dom,
+    react-router-dom,
+    react-tabs,
+    sort-by,
+    sweetalert2,
+    tailwindcss,
+    vite
+
+### **Backend**
+
+    cors,
+    dotenv,
+    express,
+    mongodb
