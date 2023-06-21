@@ -1,9 +1,10 @@
 # **👨‍👩‍👧‍👦 Baby Street**
 
-## Live Link:
-Hosted in Firebase ->[Baby Street](https://baby-street-client.web.app/)**
+## **Live Link:**
+Hosted in Firebase -> **[Baby Street](https://baby-street-client.web.app/)**
 
-## **[Server-side](https://github.com/ifoysalahmmed/baby-street-server)**
+## **Backend Link:** 
+Github Repo -> **[Server-side](https://github.com/ifoysalahmmed/baby-street-server)**
 
 ## **Some key Features of this Project -**
 
