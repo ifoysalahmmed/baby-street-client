@@ -1,6 +1,6 @@
 # **👨‍👩‍👧‍👦 Baby Street**
 
-## **[Live site link](https://baby-street-client.web.app/)**
+## **[Live site](https://baby-street-client.web.app/)**
 
 ## **[Server-side](https://github.com/ifoysalahmmed/baby-street-server)**
 
