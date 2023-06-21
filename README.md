@@ -1,6 +1,7 @@
 # **👨‍👩‍👧‍👦 Baby Street**
 
-## **[Live site](https://baby-street-client.web.app/)**
+## Live Link:
+Hosted in Firebase ->[Baby Street](https://baby-street-client.web.app/)**
 
 ## **[Server-side](https://github.com/ifoysalahmmed/baby-street-server)**
 
